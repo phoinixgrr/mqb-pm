@@ -158,6 +158,7 @@
     <string name="unit_kw">kW</string>
     <string name="unit_mph">mph</string>
     <string name="unit_nm">Nm</string>
+    <string name="unit_kgm">Kg-m</string>
     <string name="unit_psi">psi</string>
     <string name="unit_rpm">RPM</string>
     <string name="unit_rpm1000">×1000</string>

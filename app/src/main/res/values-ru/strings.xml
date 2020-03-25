@@ -5,6 +5,7 @@
     <string name="unit_kmh">км/ч</string>
     <string name="unit_rpm">об. мин</string>
     <string name="unit_nm">Nm</string>
+    <string name="unit_kgm">Kg-m</string>
     <string name="unit_kw">KW</string>
     <string name="unit_g">G</string>
     <string name="unit_mph">mph</string>

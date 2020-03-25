@@ -5,6 +5,7 @@
     <string name="unit_kmh">km/h</string>
     <string name="unit_rpm">RPM</string>
     <string name="unit_nm">Nm</string>
+    <string name="unit_kgm">Kg-m</string>
     <string name="unit_kw">KW</string>
     <string name="unit_volt">V</string>
 

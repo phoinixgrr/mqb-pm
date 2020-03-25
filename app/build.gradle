@@ -29,6 +29,9 @@ android {
                     "${defaultConfig.versionName}"
         }
     }
+    lintOptions {
+          abortOnError false
+    }
 }
 
 configurations.all {

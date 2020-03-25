@@ -700,10 +700,10 @@ public class DashboardFragment extends CarFragment {
             temperatureUnit = getString(celsiusTempUnit ? R.string.unit_c : R.string.unit_f);
         }
 
-        boolean readedPowerUnits = sharedPreferences.getBoolean("selectPowerUnit", true);  //true = kw, false = ps
+        boolean readedPowerUnits = sharedPreferences.getBoolean("selectPowerUnit", false);  //true = kw, false = ps
         if (powerUnits == null || readedPowerUnits != powerUnits) {
             powerUnits = readedPowerUnits;
-            powerFactor = powerUnits ? 1 : 1.35962f;
+            powerFactor = powerUnits ? 1 : 1.34102f;
         }
 //
 
@@ -1469,7 +1469,7 @@ public class DashboardFragment extends CarFragment {
                 icon = "empty";
                 break;
             case "currentTorque":
-                label.setText(R.string.unit_nm);
+                label.setText(R.string.unit_kgm);
                 icon = "empty";
                 break;
             case "gearboxOilTemperature":
@@ -1786,7 +1786,7 @@ public class DashboardFragment extends CarFragment {
         Log.d(TAG, "minmax speed: " + torqueMin + " " + torqueMax);
 
         pressureUnit = "bar";
-        pressureMax = 5;
+        pressureMax = 2;
         pressureMin = -1;
 
         //setupClock(icon, "ic_none", "", clock, false, "", 0, 100, "float");
@@ -1883,7 +1883,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_brakepedalposition", "", clock, false, "%", 0, 100, "integer", "integer");
                 break;
             case "exlap-currentTorque":
-                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_nm), 0, 500, "integer", "integer");
+                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_kgm), 0, 30, "integer", "integer");
                 break;
             case "exlap-currentOutputPower":
                 setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_kw) , 0, 500, "integer", "integer");
@@ -2099,6 +2099,8 @@ public class DashboardFragment extends CarFragment {
                     case "exlap-EcoHMI_Score.AvgTrip":
                     case "exlap-brakePressure":
                     case "exlap-currentTorque":
+                        clockValue = clockValue / (float) 9.80665;
+                        break;
                     case "exlap-lateralAcceleration":
 
                         // all data that can be put on the clock without further modification:
@@ -2126,7 +2128,7 @@ public class DashboardFragment extends CarFragment {
                     // pressures
                     case "exlap-absChargingAirPressure":
                     case "exlap-relChargingAirPressure":
-                        clockValue = clockValue * pressureFactor;
+                        clockValue = clockValue - pressureFactor;
                         break;
                     // specific case for wheel angle, since it needs to be turned around
                     case "exlap-wheelAngle":
@@ -2741,7 +2743,7 @@ public class DashboardFragment extends CarFragment {
                         //     mCurrentPowerValue *= powerFactor;
                         // }
                         value.setText(String.format(Locale.US, FORMAT_DECIMALS, mCurrentPowerValue));
-                        //label.setText(powerUnits?getString(R.string.unit_kw):getString(R.string.unit_hp));
+                        label.setText(powerUnits?getString(R.string.unit_kw):getString(R.string.unit_hp));
                     }
                     break;
                 case "currentTorque":
