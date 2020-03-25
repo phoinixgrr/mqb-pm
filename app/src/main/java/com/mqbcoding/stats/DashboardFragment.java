@@ -1851,7 +1851,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_gearbox", "", clock, false, "°", 0, 200, "float", "integer");
                 break;
             case "torque-turboboost_0xff1202":
-                setupClock(icon, "ic_turbo", "", clock, true, torqueUnit, torqueMin, torqueMax, "float", "float");
+                setupClock(icon, "ic_turbo", "", clock, true, torqueUnit, -1, 2, "float", "float");
                 break;
             case "exlap-absChargingAirPressure":
             case "exlap-relChargingAirPressure":
@@ -1911,7 +1911,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_none", getString(R.string.label_load), clock, false, torqueUnit, 0, 100, "float", "integer");
                 break;
             case "torque-timing_advance_0x0e":
-                setupClock(icon, "ic_timing", "", clock, false, torqueUnit, torqueMin, torqueMax, "float", "integer");
+                setupClock(icon, "ic_timing", "", clock, false, torqueUnit, -30, 30, "float", "integer");
                 break;
             case "torque-intake_air_temperature_0x0f":
                 setupClock(icon, "ic_none", getString(R.string.label_iat), clock, false, torqueUnit, 0, 100, "float", "integer");
