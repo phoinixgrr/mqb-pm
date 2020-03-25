@@ -1886,7 +1886,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_kgm), 0, 30, "integer", "integer");
                 break;
             case "exlap-currentOutputPower":
-                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_kw) , 0, 500, "integer", "integer");
+                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_hp) , 0, 250, "integer", "integer");
                 break;
             case "exlap-currentConsumptionPrimary":
             case "exlap-cycleConsumptionPrimary":
@@ -2738,10 +2738,10 @@ public class DashboardFragment extends CarFragment {
                 case "currentOutputPower":
                     Float mCurrentPowerValue = (Float) mLastMeasurements.get(queryElement);
                     if (mCurrentPowerValue != null) {
-                        // if (!powerUnits) {
-                        //     // HP
-                        //     mCurrentPowerValue *= powerFactor;
-                        // }
+                        if (!powerUnits) {
+                            // HP
+                            mCurrentPowerValue *= powerFactor;
+                        }
                         value.setText(String.format(Locale.US, FORMAT_DECIMALS, mCurrentPowerValue));
                         label.setText(powerUnits?getString(R.string.unit_kw):getString(R.string.unit_hp));
                     }
