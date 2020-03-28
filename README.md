@@ -25,7 +25,9 @@ Stopwatch/laptimer mode in VW GTI theme:
 
 # Installation instructions:
 
-Download the latest release here: https://github.com/jilleb/mqb-pm/releases
+Download the latest official release here: https://github.com/phoinixgrr/mqb-pm/releases/download/v0.88B-phoinix-fixes/Performance-Monitor0.88B-phoinix-fixes.apk
+
+Download the latest phoinix-patched release here: https://github.com/phoinixgrr/mqb-pm/releases/download/v0.88B-phoinix-fixes/Performance-Monitor0.88B-phoinix-fixes.apk
 
 - Make sure Android Auto is in developer mode: Open Android Auto (while not connected to the car), go to About. Tap the "About Android Auto" header 10 times untill you see a toast message saying you're a developer. From the right top corner select developer options, scroll down and make sure you check "Unknown sources". This will allow programs from non-Playstore apps to be run on Android Auto. See a picture guide how to enable Developer mode here: https://www.howtogeek.com/271132/how-to-enable-developer-settings-on-android-auto/
 - Install aauto-vex-vag.apk (open source service by Martoreto: https://github.com/martoreto/aauto-vex-vag/) , the service that supplies exlap-communication between Android and the head-unit. Note: this app will not show up in your launcher.
