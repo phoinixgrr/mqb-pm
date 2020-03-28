@@ -126,7 +126,7 @@ public class ExlapItemDetailsFragment extends CarFragment {
                     mHandler.postDelayed(updateTimerRunnable, 1);
             }
 
-        }, 0, 250);//Update display 0,25 second
+        }, 0, 125); //Update display 0,25 second  0, 250); //Update display 0,25 second
     }
 
     @Override
