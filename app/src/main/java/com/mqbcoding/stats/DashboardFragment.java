@@ -1886,7 +1886,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_kgm), 0, 30, "integer", "integer");
                 break;
             case "exlap-currentOutputPower":
-                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_hp) , 0, 250, "integer", "integer");
+                setupClock(icon, "ic_none", "", clock, false, getString(R.string.unit_hp) , 0, 200, "integer", "integer");
                 break;
             case "exlap-currentConsumptionPrimary":
             case "exlap-cycleConsumptionPrimary":
