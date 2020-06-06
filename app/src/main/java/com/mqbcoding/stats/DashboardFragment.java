@@ -137,6 +137,7 @@ public class DashboardFragment extends CarFragment {
     private static final String FORMAT_MILES = "%.1f miles";
     private static final String FORMAT_NO_DECIMALS = "%.0f";
     private static final String FORMAT_PERCENT = "%.1f";
+    private static final String FORMAT_PERCENT_SIGN = "%.0f%%";
     private static final String FORMAT_DEGREESPEC = "%.1f°/s";
     private static final String FORMAT_TEMPERATURE = "%.1f°";
     private static final String FORMAT_TEMPERATURE0 = "-,-°";
@@ -149,7 +150,7 @@ public class DashboardFragment extends CarFragment {
     private String sourceLocation;
     private String selectedFont;
     private boolean selectedPressureUnits;
-    private int updateSpeed = 2000;
+    private int updateSpeed = 1;
 
     private float[] MaxspeedLeft;
     private float[] MaxspeedCenter;
@@ -558,7 +559,7 @@ public class DashboardFragment extends CarFragment {
         if (accurateOn) {
             updateSpeed = 1;
         } else {
-            updateSpeed = 2000;
+            updateSpeed = 1;
         }
 
         if (!proximityOn) {
@@ -2895,7 +2896,8 @@ public class DashboardFragment extends CarFragment {
                 case "tankLevelSecondary":
                     Float tankLevel = (Float) mLastMeasurements.get(queryElement);
                     if (tankLevel != null) {
-                        value.setText(String.format(Locale.US, FORMAT_PERCENT, tankLevel));
+                        tankLevel = tankLevel * 100;
+                        value.setText(String.format(Locale.US, FORMAT_PERCENT_SIGN, tankLevel));
                     }
                     break;
             }
