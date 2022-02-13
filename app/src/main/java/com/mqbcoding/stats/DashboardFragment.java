@@ -1825,7 +1825,7 @@ public class DashboardFragment extends CarFragment {
                 break;
             case "exlap-engineSpeed":
             case "torque-rpm_0x0c":
-                setupClock(icon, "ic_none", getString(R.string.unit_rpm), clock, true, getString(R.string.unit_rpm1000), 0, 9, "float", "integer");
+                setupClock(icon, "ic_none", getString(R.string.unit_rpm), clock, true, getString(R.string.unit_rpm1000), 0, 7000, "float", "integer");
                 clock.setTicks();
                 clock.setTickTextFormat(0);
                 break;
@@ -2117,7 +2117,7 @@ public class DashboardFragment extends CarFragment {
                     //rpm data, needs to be divided by 1000 before displayed on the clock
                     case "exlap-engineSpeed":
                     case "torque-rpm_0x0c":
-                        clockValue = clockValue / 1000;
+                        clockValue = clockValue ;
                         break;
                     // temperatures
                     case "exlap-oilTemperature":
