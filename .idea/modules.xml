@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/lib/aauto-sdk/aauto-sdk.iml" filepath="$PROJECT_DIR$/lib/aauto-sdk/aauto-sdk.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mqbpm.iml" filepath="$PROJECT_DIR$/mqbpm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mqb-pm.iml" filepath="$PROJECT_DIR$/.idea/modules/mqb-pm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/aauto-sdk/mqb-pm.aauto-sdk.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/aauto-sdk/mqb-pm.aauto-sdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/mqb-pm.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/image-list-preference/mqb-pm.image-list-preference.unitTest.iml" />
     </modules>
   </component>
 </project>
