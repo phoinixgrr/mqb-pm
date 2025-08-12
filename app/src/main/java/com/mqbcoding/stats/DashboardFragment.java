@@ -1039,23 +1039,26 @@ public class DashboardFragment extends CarFragment {
             mGeocodingService = null;
         }
     };
-
     private void startTorque() {
         Intent intent = new Intent();
         intent.setClassName("org.prowl.torque", "org.prowl.torque.remote.TorqueService");
-        getContext().startService(intent);
-        Log.d(TAG, "Torque start");
 
-        boolean successfulBind = getContext().bindService(intent, torqueConnection, 0);
-        if (successfulBind) {
-            torqueBind = true;
-            Log.d("HU", "Connected to torque service!");
-        } else {
+        try {
+            // Try to bind to Torque service
+            boolean successfulBind = getContext().bindService(
+                    intent, torqueConnection, android.content.Context.BIND_AUTO_CREATE);
+
+            torqueBind = successfulBind;
+            if (successfulBind) {
+                Log.d("HU", "Connected to Torque service!");
+            } else {
+                Log.w("HU", "Torque not running, skipping connection");
+            }
+        } catch (Exception e) {
             torqueBind = false;
-            Log.e("HU", "Unable to connect to Torque plugin service");
+            Log.e("HU", "Error connecting to Torque service", e);
         }
     }
-
 
     private void stopTorque() {
         Intent sendIntent = new Intent();
@@ -1852,11 +1855,11 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_gearbox", "", clock, false, "°", 0, 200, "float", "integer");
                 break;
             case "torque-turboboost_0xff1202":
-                setupClock(icon, "ic_turbo", "", clock, true, torqueUnit, -1, 1.7, "float", "float");
+                setupClock(icon, "ic_turbo", "", clock, true, torqueUnit, -1, 2, "float", "float");
                 break;
             case "exlap-absChargingAirPressure":
             case "exlap-relChargingAirPressure":
-                setupClock(icon, "ic_turbo", "", clock, true, pressureUnit, pressureMin, pressureMax, "float", "integer");
+                setupClock(icon, "ic_turbo", "", clock, true, pressureUnit, pressureMin, pressureMax, "float", "float");
                 break;
             case "exlap-lateralAcceleration":
                 setupClock(icon, "ic_lateral", "", clock, false, getString(R.string.unit_g), -3, 3, "float", "float");
@@ -1971,7 +1974,7 @@ public class DashboardFragment extends CarFragment {
                 setupClock(icon, "ic_cact", "", clock, false, torqueUnit, 0, 100, "float", "integer");
                 break;
             case "torque-pressurecontrol_0x70":
-                setupClock(icon, "ic_turbo", "", clock, false, pressureUnit, pressureMin * 30, pressureMax * 30, "float", "integer");
+                setupClock(icon, "ic_turbo", "", clock, false, pressureUnit, pressureMin * 30, pressureMax * 30, "float", "float");
                 break;
             case "torque-o2sensor1equivalenceratio_0x34":
                 setupClock(icon, "ic_none", "O2 sensor", clock, false, torqueUnit, 0, 3, "float", "float");
