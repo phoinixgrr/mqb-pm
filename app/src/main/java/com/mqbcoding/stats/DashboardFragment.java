@@ -1834,6 +1834,9 @@ public class DashboardFragment extends CarFragment {
                 break;
             case "torque-voltage_0xff1238":
             case "exlap-batteryVoltage":
+                setupClock(icon, "ic_battery", "", clock, false, getString(R.string.unit_volt),
+                        0, 17, "float", "integer");
+                break;
             case "torque-voltagemodule_0x42":
                 setupClock(icon, "ic_battery", "", clock, false, getString(R.string.unit_volt), 0, 17, "float", "integer");
                 break;
@@ -2105,7 +2108,11 @@ public class DashboardFragment extends CarFragment {
                         break;
 
                     case "exlap-batteryVoltage":
+                        clockValue = clockValue * 10f; // 1.2 → 12.0
+                        clock.setUnit(getString(R.string.unit_volt));
+                        break;
                     case "exlap-brakePressure":
+                        clockValue = clockValue * 10f;
                         // IMPORTANT: do NOT divide these; keep raw values
                         // battery voltage should be ~12.x V; brake should map 0..1 ➜ 0..100% later
                         break;
@@ -2155,7 +2162,7 @@ public class DashboardFragment extends CarFragment {
                     // percentages
                     case "exlap-acceleratorPosition":
                         // raw 0..1  ➜ show 0..100 %
-                        clockValue = clockValue * 100f;
+                        clockValue = clockValue * 200f;
                         break;
 
                     case "exlap-tankLevelPrimary":
@@ -2713,6 +2720,7 @@ public class DashboardFragment extends CarFragment {
                 case "batteryVoltage":
                     Float mBatteryVoltage = (Float) mLastMeasurements.get("batteryVoltage");
                     if (mBatteryVoltage != null) {
+                        mBatteryVoltage *= 10f;
                         value.setText(String.format(Locale.US, FORMAT_VOLT, mBatteryVoltage));
                     }
                     break;
@@ -2828,14 +2836,15 @@ public class DashboardFragment extends CarFragment {
                 case "acceleratorPosition":
                     Float mAcceleratorPosition = (Float) mLastMeasurements.get("acceleratorPosition");
                     if (mAcceleratorPosition != null) {
-                        Float mAccelPosPercent = mAcceleratorPosition * 100;
+                        Float mAccelPosPercent = mAcceleratorPosition * 200f;
                         value.setText(String.format(Locale.US, FORMAT_DECIMALS, mAccelPosPercent));
                     }
                     break;
                 case "brakePressure":
                     Float mBrakePressure = (Float) mLastMeasurements.get("brakePressure");
                     if (mBrakePressure != null) {
-                        value.setText(String.format(Locale.US, FORMAT_DECIMALS, mBrakePressure));
+                        float percent = mBrakePressure * 10f; // x10
+                        value.setText(String.format(Locale.US, FORMAT_DECIMALS, percent));
                     }
                     break;
                 case "wheelAngle":
