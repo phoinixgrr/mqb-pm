@@ -2094,17 +2094,27 @@ public class DashboardFragment extends CarFragment {
                     case "none":    // none cannot happen currently
                         //don't do anything
                         break;
+
                     // all data that can be put on the clock without further modification:
                     case "exlap-Nav_Heading":
-                    case "exlap-batteryVoltage":
                     case "exlap-Nav_Altitude":
                     case "exlap-yawRate":
                     case "exlap-EcoHMI_Score.AvgShort":
                     case "exlap-EcoHMI_Score.AvgTrip":
-                    case "exlap-brakePressure":
-                    case "exlap-currentTorque":
-                        clockValue = clockValue / (float) 9.80665;
+                        // no scaling
                         break;
+
+                    case "exlap-batteryVoltage":
+                    case "exlap-brakePressure":
+                        // IMPORTANT: do NOT divide these; keep raw values
+                        // battery voltage should be ~12.x V; brake should map 0..1 ➜ 0..100% later
+                        break;
+
+                    case "exlap-currentTorque":
+                        // keep previous scaling if you really need it here
+                        clockValue = clockValue / 9.80665f;
+                        break;
+
                     case "exlap-lateralAcceleration":
 
                         // all data that can be put on the clock without further modification:
@@ -2144,10 +2154,16 @@ public class DashboardFragment extends CarFragment {
                         break;
                     // percentages
                     case "exlap-acceleratorPosition":
+                        // raw 0..1  ➜ show 0..100 %
+                        clockValue = clockValue * 100f;
+                        break;
+
                     case "exlap-tankLevelPrimary":
                     case "exlap-tankLevelSecondary":
+                        // fraction of tank ➜ liters
                         clockValue = clockValue * fueltanksize;
                         break;
+    
                     // specific consumption data with specific consumption units
                     // todo: maybe it's better to remove setting the unit from updateclock, but do it on setupclock
                     case "exlap-currentConsumptionPrimary":
