@@ -1083,7 +1083,7 @@ public class DashboardFragment extends CarFragment {
                     mHandler.postDelayed(updateTimerRunnable, 1);
             }
 
-        }, 0, 250);//Update display 0,25 second
+        }, 0, 75);//Update display 0,25 second
     }
 
     @Override
